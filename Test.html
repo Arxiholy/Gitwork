@@ -13,37 +13,32 @@
     <div id="example"></div>
 
     <script type="text/babel">
-        const place = document.getElementById("example");
-
-        var Bacon = React.createClass({
-
-            first: function(){
-                alert("Button " + this.props.Way + " is activate");
+        var Check = React.createClass({
+            getInitialState: function(){
+             return{checked: false}
+        },
+            handleCheck: function(){
+                this.setState({checked: !this.state.checked})
             },
-
-            second: function(){
-                alert("Button " + this.props.Stopspoints + " is activate");
-            },
-
-            render: function() {
-                return (
-                    <div className="box">
-                        <h1 className="text">{this.props.Task}</h1>
-                        <button onClick={this.first} className="btn light">{this.props.Way}</button>
-                        <button onClick={this.second} className="btn red">{this.props.Stopspoints}</button>
+            render:function(){
+                var message;
+                if(this.state.checked){
+                    message = 'Выбранно';
+                } else{
+                    message = 'Не выбранно';
+                }
+                return(
+                    <div>
+                        <input type="checkbox" onChange={this.handleCheck} defaultChecked={this.state.checked} />
+                        <p>Чекбокс {message}</p>
                     </div>
                 );
-
             }
         });
 
-        ReactDOM.render(
-            <div className="field">
-                <Bacon Task="Что вас интересует?" Way="Маршруты" Stopspoints="Остановки" />
-            </div>,
-           place
-        );
+        const app = document.getElementById("example");
 
+        ReactDOM.render(<Check />, app);
 </script>
 
 </body>
