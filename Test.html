@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="src/js/react.min.js"></script>
+    <script src="src/js/react-dom.min.js"></script>
+    <script src="src/js/browser.min.js"></script>
+    <link rel="stylesheet" href="src/css/main.css">
+</head>
+<body>
+
+    <div id="example"></div>
+
+    <script type="text/babel">
+        const place = document.getElementById("example");
+
+        var Bacon = React.createClass({
+
+            first: function(){
+                alert("Button " + this.props.Way + " is activate");
+            },
+
+            second: function(){
+                alert("Button " + this.props.Stopspoints + " is activate");
+            },
+
+            render: function() {
+                return (
+                    <div className="box">
+                        <h1 className="text">{this.props.Task}</h1>
+                        <button onClick={this.first} className="btn light">{this.props.Way}</button>
+                        <button onClick={this.second} className="btn red">{this.props.Stopspoints}</button>
+
+
+                    </div>
+                );
+
+            }
+        });
+
+        ReactDOM.render(
+            <div className="field">
+                <Bacon Task="Что вас интересует?" Way="Маршруты" Stopspoints="Остановки" />
+            </div>,
+           place
+        );
+
+</script>
+
+</body>
+</html>
